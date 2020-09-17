@@ -1,0 +1,22 @@
+<h1>Garden</h1>
+
+<p>
+    This page provides a map of the garden using <a href="https://leafletjs.com/">Leaflet</a>
+    and <a href="https://github.com/Asymmetrik/ngx-leaflet">@asymmetrik/ngx-leaflet</a>
+</p>
+
+<div class="map" *ngIf="show"
+    leaflet 
+    [leafletOptions]="options"
+    [leafletLayersControl]="layersControl"
+    (leafletMapReady)="onMapReady($event)"
+    
+    >
+</div>
+<!-- [leafletMarkerCluster]="markerClusterData" -->
+<!-- [leafletMarkerClusterOptions]="markerClusterOptions" -->
+<!-- <div style="height: 500px; flex-direction: column; border: 1px solid black">
+    <div style="background-color: red; flex-grow: 1; ">fff</div>
+</div> -->
+<!-- 
+ -->

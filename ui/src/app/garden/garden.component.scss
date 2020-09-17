@@ -1,0 +1,20 @@
+.map {
+  height: 70vh;
+  margin: 0;
+}
+
+.fill-height-or-more {
+  position: absolute;
+  height: 100%;
+  background-color: red;
+  display: flex;
+  align-items: stretch;
+  flex-direction: column;
+}
+
+.fill-height-or-more > div {
+  /* these are the flex items */
+  flex: 1;
+  align-items: stretch;
+
+}

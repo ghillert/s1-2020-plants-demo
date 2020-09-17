@@ -1,0 +1,18 @@
+version: '3.3'
+
+services:
+  db:
+    image: kartoza/postgis:12.1
+    ports:
+      - "5433:5432"
+    environment:
+      - ALLOW_IP_RANGE=0.0.0.0/0
+  app:
+    build: .
+    ports:
+      - "9080:9080"
+    depends_on:
+      - "db"
+    environment:
+       SPRING_PROFILES_ACTIVE: docker
+    command: ["/wait-for-it.sh", "-h", "db", "-p", "5432", "-t", "30", "-s", "--", "java", "-jar", "/app.jar"]

@@ -1,0 +1,25 @@
+<h1>Plants</h1>
+
+<p>
+    This page provides a list of plants.
+</p>
+
+<clr-datagrid (clrDgRefresh)="refresh($event)" [clrDgLoading]="loading">
+    <clr-dg-column style="width: 50px;">Actions</clr-dg-column>
+    <clr-dg-column>Genus</clr-dg-column>
+    <clr-dg-column>Species</clr-dg-column>
+
+    <clr-dg-row *ngFor="let plant of plants?.items || []" [class.missingPlantSign]="plant.plantSignMissing">
+        <clr-dg-cell style="width: 50px;"><a (click)="loadDetails(plant.id)"><clr-icon shape="details"></clr-icon></a></clr-dg-cell>
+        <clr-dg-cell>{{plant.genus}}</clr-dg-cell>
+        <clr-dg-cell>{{plant.species}}</clr-dg-cell>
+    </clr-dg-row>
+
+    <clr-dg-footer>
+        <clr-dg-pagination #pagination [clrDgPage]="plants.pageNumber" [clrDgPageSize]="plants.pageSize" [clrDgTotalItems]="plants.totalElements">
+            <clr-dg-page-size [clrPageSizeOptions]="[10,20,50,100]">Plants per page</clr-dg-page-size>
+            {{pagination.firstItem + 1}} - {{pagination.lastItem + 1}}
+            of {{pagination.totalItems}} plants
+        </clr-dg-pagination>
+    </clr-dg-footer>
+</clr-datagrid>

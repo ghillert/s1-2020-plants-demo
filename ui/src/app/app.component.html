@@ -1,0 +1,21 @@
+<clr-main-container>
+  <clr-header>
+    <div class="branding">
+      <a routerLink="./plants" class="nav-link">
+          <clr-icon shape="map-marker" class="has-badge--success"></clr-icon>
+          <span class="title">Plants <span class="title-separator"> | </span> <span class="spring-one">SpringOne 2020</span></span>
+      </a>
+    </div>
+  </clr-header>
+  <div class="content-container">
+      <div class="content-area">
+        <router-outlet></router-outlet>
+      </div>
+      <clr-vertical-nav [clr-nav-level]="1">
+        <a clrVerticalNavLink routerLink="./plants" routerLinkActive="active">Plants</a>
+        <a clrVerticalNavLink routerLink="./garden" routerLinkActive="active">Garden</a>
+        <div class="nav-divider"></div>
+        <a clrVerticalNavLink routerLink="./about" routerLinkActive="active">About</a>
+      </clr-vertical-nav>
+  </div>
+</clr-main-container>

@@ -1,0 +1,45 @@
+<h1>Plant Details (Id: {{plant.id}})</h1>
+
+<div *ngIf="plant.plantSignMissing" class="alert alert-warning" role="alert">
+    <div class="alert-items">
+        <div class="alert-item static">
+            <div class="alert-icon-wrapper">
+                <clr-icon class="alert-icon" shape="exclamation-triangle"></clr-icon>
+            </div>
+            <span class="alert-text">The plant sign is missing!</span>
+        </div>
+    </div>
+</div>
+
+<table class="table">
+    <tbody>
+        <tr>
+            <td><strong>Id</strong></td>
+            <td class="left">{{plant.id}}</td>
+        </tr>
+        <tr>
+            <td><strong>Genus</strong></td>
+            <td class="left">{{plant.genus}}</td>
+        </tr>
+        <tr>
+            <td><strong>Species</strong></td>
+            <td class="left">{{plant.species}}</td>
+        </tr>
+    </tbody>
+</table>
+
+<div class="clr-row clr-align-items-start">
+    <div class="clr-col-6">
+        <h2>Plants nearby</h2>
+        <ul class="list">
+            <li *ngFor="let plantNearby of plant.plantsNearby || []">{{plantNearby.genus}} {{plantNearby.species}} ({{plantNearby.distance}}m)</li>
+        </ul>
+    </div>
+    <div class="clr-col-6">
+        <h2>Picture</h2>
+
+        <img *ngFor="let image of plant?.imageIds" src="/api/images/{{image}}"/>
+    </div>
+</div>
+
+<button class="btn btn-info-outline" (click)="goBack()"><clr-icon shape="caret left"></clr-icon>Back</button>

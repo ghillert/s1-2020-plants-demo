@@ -1,0 +1,49 @@
+debug: false
+plants:
+  demo-data-file: "classpath:demo-data/import.csv"
+  demo-data-images: "classpath:demo-data/"
+  demo-data-import-mode: delete-and-import
+spring:
+  mvc:
+    throw-exception-if-no-handler-found: true
+  datasource:
+    url: jdbc:postgresql://localhost:5432/s1
+    username: plants
+    password: plants
+  flyway:
+    locations: "classpath:db/migration/{vendor}/"
+    baseline-on-migrate: false
+  application:
+    name: Plant Collector
+  jpa:
+    open-in-view: true
+    database-platform: org.hibernate.spatial.dialect.postgis.PostgisDialect
+    hibernate:
+      ddl-auto: none
+    properties:
+      hibernate.show_sql: true
+      hibernate.use_sql_comments: false
+      hibernate.format_sql: true
+      hibernate.dialect: org.hibernate.spatial.dialect.postgis.PostgisDialect
+  servlet:
+    multipart:
+      max-file-size: 8192KB
+      max-request-size: 8192KB
+  jackson:
+    serialization:
+      indent-output: true
+      write-dates-as-timestamps: false
+server:
+  port: 9080
+  error:
+    whitelabel:
+      enabled: false
+logging:
+  level:
+    org.springframework.security: INFO
+    org.springframework.web: INFO
+    org.plantcollector: INFO
+---
+spring:
+  profiles: test
+  autoconfigure.exclude: org.springframework.boot.actuate.autoconfigure.CrshAutoConfiguration

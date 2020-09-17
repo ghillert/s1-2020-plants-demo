@@ -31,3 +31,9 @@ build/
 
 ### VS Code ###
 .vscode/
+
+.DS_Store
+/ui/node
+/ui/dist
+/ui/coverage
+/ui/node_modules
