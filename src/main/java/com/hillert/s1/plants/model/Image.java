@@ -17,6 +17,7 @@ package com.hillert.s1.plants.model;
 
 import java.io.IOException;
 import java.io.InputStream;
+import java.io.Serializable;
 
 import javax.persistence.Basic;
 import javax.persistence.Entity;
@@ -33,7 +34,9 @@ import org.springframework.util.StreamUtils;
  */
 @Entity
 @Table(name="IMAGES")
-public class Image extends BaseModelObject {
+public class Image extends BaseModelObject implements Serializable {
+
+	private static final long serialVersionUID = 2495160177069650241L;
 
 	private String name;
 

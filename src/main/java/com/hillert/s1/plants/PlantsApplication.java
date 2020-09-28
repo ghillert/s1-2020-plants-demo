@@ -21,6 +21,7 @@ import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.autoconfigure.web.servlet.error.ErrorMvcAutoConfiguration;
 import org.springframework.boot.context.properties.ConfigurationPropertiesScan;
+import org.springframework.cache.annotation.EnableCaching;
 import org.springframework.context.ConfigurableApplicationContext;
 import org.springframework.context.annotation.Bean;
 
@@ -31,6 +32,7 @@ import com.hillert.s1.plants.service.impl.CsvImporter;
 @SpringBootApplication
 @ConfigurationPropertiesScan
 @EnableAutoConfiguration(exclude = ErrorMvcAutoConfiguration.class)
+@EnableCaching
 public class PlantsApplication {
 
 	public static void main(String[] args) {
@@ -43,4 +45,5 @@ public class PlantsApplication {
 	public JtsModule jtsModule() {
 		return new JtsModule();
 	}
+
 }

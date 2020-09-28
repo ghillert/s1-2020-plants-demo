@@ -87,4 +87,10 @@ public class DistanceUtils {
 		return Math.round((distanceRadians * EARTH_RADIUS_WGS84) * 100.0) / 100.0;
 	}
 
+	public static double convertSexagesimalDegreesToDecimal(int degrees, int minutes, double seconds)
+	{
+		return Math.signum(degrees) * (Math.abs(degrees) + (minutes / 60.0) + (seconds / 3600.0));
+	}
+
+
 }

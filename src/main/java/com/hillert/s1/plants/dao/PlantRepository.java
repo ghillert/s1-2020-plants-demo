@@ -17,6 +17,7 @@
 package com.hillert.s1.plants.dao;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
@@ -29,11 +30,13 @@ import org.locationtech.jts.geom.Point;
 
 /**
  * @author Gunnar Hillert
- * @since 1.0
  */
 @Transactional
 @Repository
 public interface PlantRepository extends JpaRepository<Plant, Long> {
+
+	@Query("SELECT p from Plant p left join fetch p.images WHERE p.id = :plantId")
+	Optional<Plant> getSinglePlantWithImages(@Param ("plantId") Long plantId);
 
 	@Query("SELECT p from Plant p WHERE st_dwithin(p.location, :location, :radius, true) = true")
 	List<Plant> getPlantsWithinRadius(@Param ("location") Point location, @Param ("radius") double radius);

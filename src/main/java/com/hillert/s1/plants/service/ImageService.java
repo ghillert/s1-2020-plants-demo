@@ -15,17 +15,21 @@
  */
 package com.hillert.s1.plants.service;
 
+import java.util.List;
+import java.util.Optional;
+
+import org.locationtech.jts.geom.Point;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
+
+import com.hillert.s1.plants.model.Image;
+import com.hillert.s1.plants.model.Plant;
+
 /**
- * The importer is responsible to import demo data into the application.
  *
  * @author Gunnar Hillert
  *
  */
-public interface Importer {
-
-	/**
-	 * Trigger the demo data import.
-	 */
-	void importPlantData();
-
+public interface ImageService {
+	Optional<Image> getSingleImage(Long id);
 }
