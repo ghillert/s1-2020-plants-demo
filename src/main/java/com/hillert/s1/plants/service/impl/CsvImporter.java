@@ -28,6 +28,7 @@ import org.locationtech.jts.geom.PrecisionModel;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.io.Resource;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.util.StringUtils;
 
 import com.hillert.s1.plants.config.PlantsConfig;
@@ -50,6 +51,7 @@ import com.univocity.parsers.csv.CsvParserSettings;
  *
  */
 @Service
+@Transactional
 public class CsvImporter implements Importer {
 
 	@Autowired

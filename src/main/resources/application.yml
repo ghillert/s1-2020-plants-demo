@@ -2,8 +2,12 @@ debug: false
 plants:
   demo-data-file: "classpath:demo-data/import.csv"
   demo-data-images: "classpath:demo-data/"
-  demo-data-import-mode: delete-and-import
+  demo-data-import-mode: import-once
 spring:
+  cache:
+    type: jcache
+    cache-names:
+    - jcache-partitioned-plants
   mvc:
     throw-exception-if-no-handler-found: true
   datasource:
@@ -16,7 +20,7 @@ spring:
   application:
     name: Plant Collector
   jpa:
-    open-in-view: true
+    open-in-view: false
     database-platform: org.hibernate.spatial.dialect.postgis.PostgisDialect
     hibernate:
       ddl-auto: none

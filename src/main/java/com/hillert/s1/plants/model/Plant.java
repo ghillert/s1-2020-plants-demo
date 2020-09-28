@@ -15,6 +15,7 @@
  */
 package com.hillert.s1.plants.model;
 
+import java.io.Serializable;
 import java.util.List;
 
 import javax.persistence.CascadeType;
@@ -26,11 +27,11 @@ import javax.persistence.Table;
 
 import org.locationtech.jts.geom.Point;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
-
 @Entity
 @Table(name="PLANTS")
-public class Plant extends BaseModelObject {
+public class Plant extends BaseModelObject implements Serializable {
+
+	private static final long serialVersionUID = 3396664133771741373L;
 
 	private String genus;
 	private String species;
@@ -39,7 +40,6 @@ public class Plant extends BaseModelObject {
 	@Column(columnDefinition="geometry")
 	private Point location;
 
-	@JsonIgnore
 	@OneToMany(mappedBy = "plant", fetch=FetchType.LAZY, cascade=CascadeType.ALL)
 	private List<Image> images;
 

@@ -15,6 +15,8 @@
  */
 package com.hillert.s1.plants.model;
 
+import java.io.Serializable;
+
 import javax.persistence.EntityListeners;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -27,12 +29,13 @@ import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 /**
  *
  * @author Gunnar Hillert
- * @since 1.0
  *
  */
 @MappedSuperclass
 @EntityListeners(AuditingEntityListener.class)
-public abstract class BaseModelObject {
+public abstract class BaseModelObject implements Serializable {
+
+	private static final long serialVersionUID = -8683328871869934098L;
 
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
@@ -40,20 +43,6 @@ public abstract class BaseModelObject {
 
 	@Version
 	protected Integer version;
-
-	protected Audit audit = new Audit();
-
-	public BaseModelObject() {
-		super();
-	}
-
-	public Audit getAudit() {
-		return audit;
-	}
-
-	public void setAudit(Audit audit) {
-		this.audit = audit;
-	}
 
 	public Long getId() {
 		return id;

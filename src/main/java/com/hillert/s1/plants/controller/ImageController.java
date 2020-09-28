@@ -24,8 +24,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.hillert.s1.plants.controller.problems.ImageNotFoundProblem;
-import com.hillert.s1.plants.dao.ImageRepository;
 import com.hillert.s1.plants.model.Image;
+import com.hillert.s1.plants.service.ImageService;
 
 /**
  * Explicit controller for retrieving Plant images.
@@ -38,7 +38,7 @@ import com.hillert.s1.plants.model.Image;
 public class ImageController {
 
 	@Autowired
-	private ImageRepository imageRepository;
+	private ImageService imageService;
 
 	/**
 	 * Get a specific image for the given image id.
@@ -50,7 +50,7 @@ public class ImageController {
 	@GetMapping(path="/{imageId}")
 	public ResponseEntity<byte[]> getImage(@PathVariable Long imageId) {
 
-		final Image imageFromDb = imageRepository.findById(imageId).orElseGet(() -> {
+		final Image imageFromDb = imageService.getSingleImage(imageId).orElseGet(() -> {
 			throw new ImageNotFoundProblem(imageId);
 		});
 
