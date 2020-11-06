@@ -39,6 +39,8 @@ spring:
       write-dates-as-timestamps: false
 server:
   port: 9080
+  compression:
+    enabled: true
   error:
     whitelabel:
       enabled: false
